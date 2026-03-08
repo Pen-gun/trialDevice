@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { createUser } from '@/app/service/api'
 
 export default function UserForm({ onSuccess }: { onSuccess: () => void }) {
   const [email, setEmail] = useState('')
@@ -7,12 +8,7 @@ export default function UserForm({ onSuccess }: { onSuccess: () => void }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const res = await fetch('/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, name })
-    })
-    if (res.ok) {
+    if (await createUser(email, name)) {
       setEmail('')
       setName('')
       onSuccess()
