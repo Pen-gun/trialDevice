@@ -16,7 +16,7 @@ export default function UserList({ refresh }: { refresh: number }) {
 
   return (
     <div>
-      <h2>Users:</h2>
+      <h2 className="text-2xl font-bold mb-4">Users:</h2>
       {users.map((u) => (
         <p key={u.id}>
           {u.email} - {u.name}
