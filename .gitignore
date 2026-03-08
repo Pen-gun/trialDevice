@@ -174,4 +174,7 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+#generated files
+generated/prisma
+
 # End of https://www.toptal.com/developers/gitignore/api/nextjs,node,dotenv
