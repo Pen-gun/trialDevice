@@ -11,7 +11,9 @@ export async function createUserController(c: Context) {
   const body = await c.req.json()
   const result = createUserSchema.safeParse(body)
   if (!result.success) {
-    return c.json({ Error: treeifyError(result.error) }, 400)
+    return c.json({ 
+      message: 'Validation failed',
+      error: treeifyError(result.error) }, 400)
   }
   const user = await createUser(result.data)
   return c.json(user, 201)

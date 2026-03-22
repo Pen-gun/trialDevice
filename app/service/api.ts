@@ -4,7 +4,11 @@ export async function createUser(email: string, name: string) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, name })
   })
-  return res.ok
+  const data = await res.json()
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to create user')
+  }
+  return data
 }
 
 export async function getUsers() {
